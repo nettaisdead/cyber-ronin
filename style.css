@@ -5,8 +5,6 @@
 }
 
 body {
-
-    background: radial-gradient(circle, #1a103c 0%, #0b071a 100%);
     font-family: 'Courier New', Courier, monospace;
     display: flex;
     justify-content: center;
@@ -14,6 +12,18 @@ body {
     min-height: 100vh;
     overflow: hidden;
     position: relative;
+    
+    
+    background-image: url('assets/background.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover; 
+    
+    
+    image-rendering: pixelated; 
+    image-rendering: crisp-edges;
+    background-color: #0b0118; 
 }
 
 
@@ -25,19 +35,26 @@ body {
     height: 200vh;
     background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="100"><rect width="1.5" height="25" fill="%2300f0ff" opacity="0.35"/></svg>') repeat;
     animation: rainDrop 0.7s linear infinite;
-    z-index: -1;
+    z-index: 1; 
+    pointer-events: none;
 }
 
 @keyframes rainDrop {
     100% { transform: translateY(100vh); }
 }
 
+
 .game-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    z-index: 10;
+    z-index: 10; 
+    background: rgba(18, 9, 36, 0.75); 
+    padding: 25px;
+    border-radius: 12px;
+    border: 2px solid rgba(0, 240, 255, 0.3);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
 }
 
 .game-header {
@@ -66,7 +83,6 @@ h1 {
     box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
 }
 
-
 #game-board {
     display: grid;
     grid-template-columns: repeat(45, 25px);
@@ -82,13 +98,11 @@ h1 {
     position: relative;
 }
 
-
 .wall {
     background-color: #261742;
     border: 1px solid #37225e;
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
 }
-
 
 .border-wall {
     background-color: #ff0055;
@@ -96,30 +110,24 @@ h1 {
     box-shadow: 0 0 10px rgba(255, 0, 85, 0.5), inset 0 0 5px #fff;
 }
 
-
 .floor {
     background-color: #160d29;
     border: 1px solid #1f123a;
 }
 
-
 .player {
     border-radius: 50%;
-
     background: radial-gradient(circle, #f0b473 15%, #b37639 60%, #00f0ff 100%);
     box-shadow: 0 0 15px #00f0ff;
     transform: scale(0.95);
 }
 
-
 .enemy {
     border-radius: 35% 35% 15% 15%;
-   
     background: linear-gradient(to bottom, #44495e 55%, #ff0055 55%, #ff0055 85%, #222 85%);
     box-shadow: 0 0 18px #ff0055;
     transform: scale(0.9);
 }
-
 
 .gold {
     background-color: #ffcc00;
@@ -128,12 +136,10 @@ h1 {
     box-shadow: 0 0 12px #ffcc00;
 }
 
-
 .exit {
     background-color: #00ff66;
     box-shadow: 0 0 25px #00ff66;
 }
-
 
 .slash::after {
     content: "";
@@ -153,4 +159,22 @@ h1 {
 @keyframes katanaSwing {
     0% { transform: rotate(-45deg) scale(0.6); opacity: 1; }
     100% { transform: rotate(135deg) scale(1.3); opacity: 0; }
+}
+
+.player {
+    
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" shape-rendering="crispEdges"><rect x="5" y="5" width="15" height="15" fill="%23222733"/><circle cx="12.5" cy="12.5" r="9" fill="%2300f0ff" stroke="%23111" stroke-width="1.5"/><line x1="12.5" y1="12.5" x2="12.5" y2="3" stroke="%23ff0055" stroke-width="1"/><line x1="11.5" y1="12.5" x2="9" y2="4" stroke="%23111" stroke-width="1"/><line x1="13.5" y1="12.5" x2="16" y2="4" stroke="%23111" stroke-width="1"/><circle cx="12.5" cy="12.5" r="3" fill="%23120924"/><path d="M10 14s1.5 2 2.5 2 2.5-2 2.5-2" stroke="%23ff0055" stroke-width="1" fill="none"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.8));
+}
+
+.enemy {
+    
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" shape-rendering="crispEdges"><rect x="4" y="6" width="12" height="13" rx="2" fill="%2334394f" stroke="%23111" stroke-width="1.5"/><rect x="7" y="4" width="6" height="5" rx="1" fill="%23222533"/><rect x="8" y="6" width="4" height="1.5" fill="%23ff0055"/><rect x="15" y="3" width="6" height="19" rx="1" fill="%231a1c23" stroke="%23ff0055" stroke-width="1"/><line x1="18" y1="6" x2="18" y2="18" stroke="%23ff0055" stroke-width="1.5" stroke-dasharray="2 2"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: drop-shadow(0 0 8px rgba(255, 0, 85, 0.6));
 }
